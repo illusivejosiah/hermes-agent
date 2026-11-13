@@ -9,7 +9,8 @@ jobs:
       fail-fast: false
       matrix:
         leg: [base, head]
-        runner: [macos-latest, ubuntu-latest]
+        runner: [macos-latest]
+        rep: [1, 2, 3]
     runs-on: ${{ matrix.runner }}
     timeout-minutes: 25
     steps:
@@ -29,7 +30,7 @@ jobs:
       - name: run
         timeout-minutes: 15
         env:
-          TRIALS: '180'
+          TRIALS: '300'
           PARALLEL: '6'
           HERMES_HOME: ${{ runner.temp }}/hh
         run: |
